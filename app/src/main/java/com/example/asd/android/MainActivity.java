@@ -12,11 +12,13 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String EXTRA_MESSAGE = "com.example.myfirstapp.MESSAGE";
     private static final int HIGH_SCORE = 67890;
+    private Store store;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        store = new Store(this);
     }
 
     /**
@@ -29,12 +31,21 @@ public class MainActivity extends AppCompatActivity {
         intent.putExtra(EXTRA_MESSAGE, message);
 
         // Write SharedPreferences
-        SharedPreferences sharedPref = this.getSharedPreferences(
+        SharedPreferences sharedPref = getSharedPreferences(
                 getString(R.string.reference_file_key), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
 
         editor.putInt(getString(R.string.saved_high_score), HIGH_SCORE);
-        editor.commit();
+        editor.apply();
+
+        startActivity(intent);
+    }
+
+    public void openBrowser(View view) {
+        Intent intent = new Intent(this, OpenBrowserActive.class);
+        EditText editText = (EditText) findViewById(R.id.editText);
+        String message = editText.getText().toString();
+        intent.putExtra(EXTRA_MESSAGE, message);
 
         startActivity(intent);
     }

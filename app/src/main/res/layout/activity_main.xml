@@ -8,16 +8,14 @@
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="0dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="@string/edit_message"
         android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/button"
-        android:layout_marginStart="16dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="16dp" />
 
     <Button
         android:id="@+id/button"
@@ -30,4 +28,14 @@
         app:layout_constraintBaseline_toBaselineOf="@+id/editText"
         app:layout_constraintLeft_toRightOf="@+id/editText"
         app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/browser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:onClick="openBrowser"
+        android:text="Open Browser"
+        app:layout_constraintTop_toBottomOf="@+id/editText"
+        tools:layout_editor_absoluteX="16dp" />
 </android.support.constraint.ConstraintLayout>
